@@ -1,0 +1,14 @@
+# Rotten Potatoes Tutorial
+A Node.js Rotten Tomatoes clone.
+
+## Running Locally
+Make sure you have [Node.js](http://nodejs.org/) installed.
+
+```sh
+git clone https://github.com/edwintcloud/Rotten-Potatoes-Tutorial.git
+cd Rotten-Potatoes-Tutorial
+npm install
+node app.js # or use nodemon app.js
+```
+
+The app should now be running on [localhost:3000](http://localhost:3000/).
