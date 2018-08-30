@@ -6,10 +6,6 @@ const methodOverride = require('method-override')
 const Handlebars = require('handlebars');
 const HandlebarsIntl = require('handlebars-intl');
 var exphbs = require('express-handlebars');
-var uristring =
-    'mongodb://localhost/rotten-potatoes' ||
-    'mongodb://user:password1@ds137812.mlab.com:37812/heroku_fpwxpnv1'
-var theport = process.env.PORT || 3000;
 
 // EXPRESS APP
 const app = express();
@@ -25,12 +21,9 @@ app.set('view engine', hbs.extname);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // MONGOOSE CONNECTION
-mongoose.connect(uristring, { useNewUrlParser: true }, function (err, res) {
-      if (err) {
-      console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-      } else {
-      console.log ('Succeeded connecting to: ' + uristring);
-      }
+mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true })
+  .catch(err => {
+      mongoose.connect('mongodb://user:password1@ds137812.mlab.com:37812/heroku_fpwxpnv1', { useNewUrlParser: true })
   });
 
 // HANDLEBARS HELPERS
@@ -54,6 +47,6 @@ reviews(app, Review, Comment);
 comments(app, Comment);
 
 // CONSOLE
-app.listen(theport, () => {
+app.listen(3000, () => {
   console.log('App listening on port 3000!')
 });
