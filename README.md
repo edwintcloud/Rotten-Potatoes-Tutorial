@@ -1,5 +1,5 @@
 # Rotten Potatoes Tutorial
-A Node.js Rotten Tomatoes clone.
+A Node.js and MongoDB Rotten Tomatoes clone.
 
 ## Running Locally
 Make sure you have [Node.js](http://nodejs.org/) and [MongoDB](https://www.mongodb.com/) installed.
