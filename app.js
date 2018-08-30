@@ -20,7 +20,7 @@ const Review = mongoose.model('Review', {
 
 // CONFIGURATION
 var hbs = exphbs.create({extname: '.handlebars'});
-app.engine(hbs.extname, hbs.engine);
+app.engine(hbs.extname, exphbs({defaultLayout: 'main'}));
 app.set('view engine', hbs.extname);
 app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true});

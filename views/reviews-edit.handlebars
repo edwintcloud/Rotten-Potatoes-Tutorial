@@ -1,8 +1,12 @@
-<form method="POST" action="/reviews/{{review._id}}?_method=PUT">
-  {{> reviews-form}}
-  <!-- BUTTON -->
-  <p>
-    <input type="button" value="Cancel" onclick="history.back(-1)" />
-    <button type="submit">Save Review</button>
-  </p>
-</form>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <form method="POST" action="/reviews/{{review._id}}?_method=PUT">
+        {{> reviews-form}}
+        <!-- BUTTON -->
+        <div class="form-group">
+            <input class="btn btn-primary" type="button" value="Cancel" onclick="history.back(-1)" />
+            <button class="btn btn-primary" type="submit">Save Review</button>
+        </div>
+        </form>
+    </div>
+</div>
