@@ -44,6 +44,6 @@ var routes = require('./controllers/reviews');
 routes(app, Review);
 
 // CONSOLE
-app.listen(3000, () => {
+app.listen(rocess.env.PORT || 3000, () => {
   console.log('App listening on port 3000!')
 });
