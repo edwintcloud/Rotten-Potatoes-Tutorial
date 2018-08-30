@@ -16,5 +16,8 @@
     "handlebars-intl": "^1.1.2",
     "method-override": "^3.0.0",
     "mongoose": "^5.2.10"
-  }
+},
+"scripts": {
+  "start": "node app.js"
+}
 }
