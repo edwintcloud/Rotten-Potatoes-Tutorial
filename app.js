@@ -7,22 +7,18 @@ const Handlebars = require('handlebars');
 const HandlebarsIntl = require('handlebars-intl');
 var exphbs = require('express-handlebars');
 var uristring =
-    'mongodb://user:password1@ds137812.mlab.com:37812/heroku_fpwxpnv1' ||
     process.env.MONGOLAB_URI ||
     process.env.MONGOHQ_URL ||
-    'mongodb://localhost/rotten-potatoes'
+    'mongodb://localhost/rotten-potatoes' ||
+    'mongodb://user:password1@ds137812.mlab.com:37812/heroku_fpwxpnv1'
 var theport = process.env.PORT || 3000;
 
 // EXPRESS APP
 const app = express();
 
-// REVIEW MONGODB MODEL
-const Review = mongoose.model('Review', {
-  title: String,
-  movieTitle: String,
-  rating: Number,
-  description: String,
-});
+// IMPORT MONGODB MODELS
+const Review = require('./models/review')
+const Comment = require('./models/comment')
 
 // CONFIGURATION
 var hbs = exphbs.create({extname: '.handlebars'});
@@ -35,7 +31,7 @@ mongoose.connect(uristring, { useNewUrlParser: true }, function (err, res) {
       if (err) {
       console.log ('ERROR connecting to: ' + uristring + '. ' + err);
       } else {
-      console.log ('Succeeded connected to: ' + uristring);
+      console.log ('Succeeded connecting to: ' + uristring);
       }
   });
 
@@ -54,8 +50,10 @@ Handlebars.registerHelper("select", function(value, options) {
 app.use(methodOverride('_method'));
 
 // IMPORT OUR ROUTES
-var routes = require('./controllers/reviews');
-routes(app, Review);
+var reviews = require('./controllers/reviews');
+var comments = require('./controllers/comments');
+reviews(app, Review, Comment);
+comments(app, Comment);
 
 // CONSOLE
 app.listen(theport, () => {

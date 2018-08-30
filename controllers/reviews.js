@@ -1,4 +1,4 @@
-module.exports = function (app, Review) {
+module.exports = function (app, Review, Comment) {
 
     // INDEX ROUTE
     app.get('/', (req, res) => {
@@ -28,11 +28,17 @@ module.exports = function (app, Review) {
 
     // SHOW
     app.get('/reviews/:id', (req, res) => {
-      Review.findById(req.params.id).then((review) => {
-        res.render('reviews-show', { review: review })
+      // find review
+      Review.findById(req.params.id).then(review => {
+        // fetch its comments
+        Comment.find({ reviewId: req.params.id }).then(comments => {
+          // respond with the template with both values
+          res.render('reviews-show', { review: review, comments: comments })
+        })
       }).catch((err) => {
-        console.log(err.message);
-      })
+        // catch errors
+        console.log(err.message)
+      });
     });
 
     // EDIT
