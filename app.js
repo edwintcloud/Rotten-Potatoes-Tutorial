@@ -7,8 +7,6 @@ const Handlebars = require('handlebars');
 const HandlebarsIntl = require('handlebars-intl');
 var exphbs = require('express-handlebars');
 var uristring =
-    process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL ||
     'mongodb://localhost/rotten-potatoes' ||
     'mongodb://user:password1@ds137812.mlab.com:37812/heroku_fpwxpnv1'
 var theport = process.env.PORT || 3000;
