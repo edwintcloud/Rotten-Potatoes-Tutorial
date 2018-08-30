@@ -30,13 +30,13 @@ app.set('view engine', hbs.extname);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // MONGOOSE CONNECTION
-mongoose.connect(uristring, function (err, res) {
+mongoose.connect(uristring, { useNewUrlParser: true }, function (err, res) {
       if (err) {
       console.log ('ERROR connecting to: ' + uristring + '. ' + err);
       } else {
       console.log ('Succeeded connected to: ' + uristring);
       }
-  }, { useNewUrlParser: true });
+  });
 
 // HANDLEBARS HELPERS
 Handlebars.registerHelper("select", function(value, options) {
