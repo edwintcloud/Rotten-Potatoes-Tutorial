@@ -21,10 +21,7 @@ app.set('view engine', hbs.extname);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // MONGOOSE CONNECTION
-mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true })
-  .catch(err => {
-      mongoose.connect('mongodb://user:password1@ds137812.mlab.com:37812/heroku_fpwxpnv1', { useNewUrlParser: true })
-  });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
 
 // HANDLEBARS HELPERS
 Handlebars.registerHelper("select", function(value, options) {
@@ -47,6 +44,6 @@ reviews(app, Review, Comment);
 comments(app, Comment);
 
 // CONSOLE
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('App listening on port 3000!')
 });
