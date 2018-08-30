@@ -23,7 +23,7 @@ var hbs = exphbs.create({extname: '.handlebars'});
 app.engine(hbs.extname, exphbs({defaultLayout: 'main'}));
 app.set('view engine', hbs.extname);
 app.use(bodyParser.urlencoded({ extended: true }));
-mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true});
+mongoose.connect(rocess.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', { useNewUrlParser: true});
 
 // HANDLEBARS HELPERS
 Handlebars.registerHelper("select", function(value, options) {
