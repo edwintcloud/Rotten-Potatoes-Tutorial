@@ -1,4 +1,4 @@
-# Rotten Potatoes Tutorial
+# Rotten Potatoes - Part Deux Tutorial
 A Node.js and MongoDB Rotten Tomatoes clone.
 
 ## Running Locally
