@@ -1,20 +1,19 @@
 div.movie {
-    all: unset;
     vertical-align: top;
     display: inline-block;
     text-align: center;
     width: 200px;
+    height: 420px;
 }
 div.movie span.title {
     display: block;
-    padding: .2em 0 0 0;
     font-weight:500;
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 div.movie span.genre {
     display: block;
-    padding: .5em 0 3em 0;
     font-weight:300;
 }
-div.movie img {
+div.movie a {
+    margin-bottom: .2em;
 }

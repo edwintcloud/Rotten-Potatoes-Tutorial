@@ -1,21 +1,46 @@
-const MovieDb = require('moviedb-promise')
-const moviedb = new MovieDb('2b5542bc24eae522f3d8382c3c0cc4bb')
+const MovieDb = require('moviedb-promise');
+const moviedb = new MovieDb('2b5542bc24eae522f3d8382c3c0cc4bb');
 
 module.exports = function (app) {
 
     app.get('/', (req, res) => {
-        var movies = moviedb.miscNowPlayingMovies().then(response => {
-            response.results.forEach(function(value) {
-                value.genres = [];
-                moviedb.movieInfo(value.id).then(movieDetails => {
-                    movieDetails.genres.forEach(function(genre) {
-                        value.genres.push(" " + genre.name);
+
+        moviedb.miscNowPlayingMovies().then(movies => {
+            var promises = [];
+            movies.results.forEach(function(movie) {
+                movie.genres = [];
+                var promise = moviedb.movieInfo(movie.id);
+                promise.then(movieInfo => {
+                    movieInfo.genres.forEach(function(genre) {
+                        movie.genres.push(" " + genre.name);
                     });
                 }).catch(console.error);
+                promises.push(promise);
             });
-            setTimeout(function() {
-                res.render('movies-index', { movies: response.results });
-            }, 1000);
+
+            // Render page only after all movieInfo requests are completed (for each movies' genres)
+            Promise.all(promises).then(response => {
+                res.render('movies-index', { movies: movies.results });
+            }).catch(console.error);
+
+        }).catch(console.error);
+    });
+
+    app.get('/movies/:id', (req, res) => {
+        moviedb.movieInfo({ id: req.params.id }).then(movie => {
+            if (movie.video) {
+                moviedb.movieVideos({ id: req.params.id }).then(videos => {
+                    movie.trailer_youtube_id = videos.results[0].key
+                    renderTemplate(movie)
+                });
+            } else {
+                renderTemplate(movie);
+            }
+
+            function renderTemplate(movie)  {
+                res.render('movies-show', { movie: movie });
+            }
+
         }).catch(console.error);
     });
 }
