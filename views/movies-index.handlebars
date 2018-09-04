@@ -1,0 +1,12 @@
+<h1>Now Playing</h1>
+
+{{#each movies}}
+<a href="/movies/{{this.id}}">
+    <div class="movie">
+        <img src="https://image.tmdb.org/t/p/w200{{this.poster_path}}" alt="{{this.title}}">
+        <span class="title">{{this.title}}</span>
+        </a>
+        <span class="genre">{{this.genres}}</span>
+    </div>
+
+{{/each}}

@@ -19,6 +19,7 @@ var hbs = exphbs.create({extname: '.handlebars'});
 app.engine(hbs.extname, exphbs({defaultLayout: 'main'}));
 app.set('view engine', hbs.extname);
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 // MONGOOSE CONNECTION
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
@@ -40,8 +41,10 @@ app.use(methodOverride('_method'));
 // IMPORT OUR ROUTES
 var reviews = require('./controllers/reviews');
 var comments = require('./controllers/comments');
+var movies = require('./controllers/movies');
 reviews(app, Review, Comment);
 comments(app, Comment);
+movies(app);
 
 // CONSOLE
 app.listen(process.env.PORT || 3000, () => {
