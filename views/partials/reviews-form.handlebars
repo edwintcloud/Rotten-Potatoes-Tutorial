@@ -1,16 +1,16 @@
 <fieldset>
-  <legend>Edit Review</legend>
+    <legend>Edit Review</legend>
 
-  <!-- TITLE -->
-  <div class="form-group">
-    <label for="review-title">Title</label><br>
-    <input class="form-control" id="review-title" type="text" name="title" value="{{review.title}}"/>
+    <!-- TITLE -->
+    <div class="form-group">
+        <label for="review-title">Title</label><br>
+        <input class="form-control" id="review-title" type="text" name="title" value="{{review.title}}"/>
   </div>
 
-  <!-- RATING -->
-  <div class="form-group">
-      <label for="rating">Rating:</label>
-      <select class="form-control" id="rating" name="rating">
+        <!-- RATING -->
+        <div class="form-group">
+            <label for="rating">Rating:</label>
+            <select class="form-control" id="rating" name="rating">
           {{#select review.rating}}
           <option value="0">0</option>
           <option value="1">1</option>
@@ -20,11 +20,11 @@
           <option value="5">5</option>
           {{/select}}
       </select>
-  </div>
+        </div>
 
-  <!-- DESCRIPTION -->
-  <div class="form-group">
-    <label for="review-description">Description</label><br>
-    <textarea class="form-control" id="review-description" name="description" rows="10" />{{review.description}}</textarea>
-  </div>
+        <!-- DESCRIPTION -->
+        <div class="form-group">
+            <label for="review-description">Description</label><br>
+            <textarea class="form-control" id="review-description" name="description" rows="10" />{{review.description}}</textarea>
+        </div>
 </fieldset>

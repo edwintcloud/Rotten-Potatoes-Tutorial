@@ -6,9 +6,11 @@
         <h1>{{review.title}} - {{review.rating}} stars</h1>
         <p>{{review.description}}</p>
         <p><a href="/movies/{{review.movieId}}/reviews/{{review._id}}/edit">Edit</a></p>
-        <p><form method="POST" action="/movies/{{review.movieId}}/reviews/{{review._id}}?_method=DELETE">
-        <button class="btn btn-primary" type="submit">Delete</button>
-        </form></p>
+        <p>
+            <form method="POST" action="/movies/{{review.movieId}}/reviews/{{review._id}}?_method=DELETE">
+                <button class="btn btn-primary" type="submit">Delete</button>
+            </form>
+        </p>
 
         <hr>
 
@@ -18,10 +20,10 @@
         <hr>
 
         <div id="comments">
-        <!-- Show Comments -->
-        {{#each comments}}
-          {{> comment}}
-        {{/each}}
+            <!-- Show Comments -->
+            {{#each comments}}
+                {{> comment}}
+            {{/each}}
         </div>
 
 
