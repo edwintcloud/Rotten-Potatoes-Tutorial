@@ -12,22 +12,22 @@ module.exports = function (app, Review, Comment) {
     // });
 
     // NEW REVIEW ROUTE
-    app.get('/reviews/new', (req, res) => {
-      res.render('reviews-new', {});
+    app.get('/movies/:movieId/reviews/new', (req, res) => {
+        res.render('reviews-new', { movieId: req.params.movieId });
     })
 
     // CREATE
-    app.post('/reviews', (req, res) => {
+    app.post('/movies/:movieId/reviews', (req, res) => {
       Review.create(req.body).then((review) => {
         console.log(review)
-        res.redirect(`/reviews/${review._id}`) // Redirect to reviews/:id
+        res.redirect(`/movies/${req.params.movieId}`) // Redirect to reviews/:id
       }).catch((err) => {
         console.log(err.message)
       })
     });
 
     // SHOW
-    app.get('/reviews/:id', (req, res) => {
+    app.get('/movies/:movieId/reviews/:id', (req, res) => {
       // find review
       Review.findById(req.params.id).then(review => {
         // fetch its comments
@@ -42,17 +42,17 @@ module.exports = function (app, Review, Comment) {
     });
 
     // EDIT
-    app.get('/reviews/:id/edit', function (req, res) {
+    app.get('/movies/:movieId/reviews/:id/edit', function (req, res) {
       Review.findById(req.params.id, function(err, review) {
         res.render('reviews-edit', {review: review});
       })
     });
 
     // UPDATE
-    app.put('/reviews/:id', (req, res) => {
+    app.put('/movies/:movieId/reviews/:id', (req, res) => {
       Review.findByIdAndUpdate(req.params.id, req.body)
         .then(review => {
-          res.redirect(`/reviews/${review._id}`)
+          res.redirect(`/movies/${req.params.movieId}/reviews/${req.params.id}`);
         })
         .catch(err => {
           console.log(err.message)
@@ -63,7 +63,7 @@ module.exports = function (app, Review, Comment) {
     app.delete('/reviews/:id', function (req, res) {
       console.log("DELETE review")
       Review.findByIdAndRemove(req.params.id).then((review) => {
-        res.redirect('/');
+        res.redirect(`/movies/${req.params.movieId}`);
       }).catch((err) => {
         console.log(err.message);
       })

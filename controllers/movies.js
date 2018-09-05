@@ -1,7 +1,7 @@
 const MovieDb = require('moviedb-promise');
 const moviedb = new MovieDb('2b5542bc24eae522f3d8382c3c0cc4bb');
 
-module.exports = function (app) {
+module.exports = function (app, Review) {
 
     app.get('/', (req, res) => {
 
@@ -28,19 +28,20 @@ module.exports = function (app) {
 
     app.get('/movies/:id', (req, res) => {
         moviedb.movieInfo({ id: req.params.id }).then(movie => {
-            if (movie.video) {
-                moviedb.movieVideos({ id: req.params.id }).then(videos => {
-                    movie.trailer_youtube_id = videos.results[0].key
-                    renderTemplate(movie)
-                });
-            } else {
-                renderTemplate(movie);
-            }
+            Review.find({ movieId: movie.id}).then(reviews => {
+                if (movie.video) {
+                    moviedb.movieVideos({ id: req.params.id }).then(videos => {
+                        movie.trailer_youtube_id = videos.results[0].key
+                        renderTemplate(movie)
+                    });
+                } else {
+                    renderTemplate(movie);
+                }
 
-            function renderTemplate(movie)  {
-                res.render('movies-show', { movie: movie });
-            }
-
+                function renderTemplate(movie)  {
+                    res.render('movies-show', { movie: movie, reviews: reviews });
+                }
+            });
         }).catch(console.error);
     });
 }

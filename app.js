@@ -44,7 +44,7 @@ var comments = require('./controllers/comments');
 var movies = require('./controllers/movies');
 reviews(app, Review, Comment);
 comments(app, Comment);
-movies(app);
+movies(app, Review);
 
 // CONSOLE
 app.listen(process.env.PORT || 3000, () => {
