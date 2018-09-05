@@ -1,4 +1,4 @@
-<form action="/movies/{{review.movieId}}/reviews/comments" method="post">
+<form action="#" method="post" id="newComment">
   <input type="hidden" value="{{review.movieId}}" name="movieId">
   <input type="hidden" value="{{review._id}}" name="reviewId">
   <fieldset>
@@ -26,6 +26,6 @@
 
   <!-- BUTTON -->
   <div class="form-group">
-    <button class="btn btn-primary" type="submit">Save Comment</button>
+    <button class="btn btn-primary" type="button" onclick="test();">Save Comment</button>
   </div>
 </form>

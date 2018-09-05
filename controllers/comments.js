@@ -3,10 +3,10 @@ module.exports = function (app, Comment) {
     // CREATE Comment
     app.post('/movies/:movieId/reviews/comments', (req, res) => {
         Comment.create(req.body).then(comment => {
-        res.redirect(`/movies/${req.params.movieId}/reviews/${comment.reviewId}`)
-    }).catch((err) => {
-        console.log(err.message)
-    })
+        res.status(200).send({ comment: comment });
+        }).catch((err) => {
+        res.status(400).send({ err: err })
+  })
     });
 
     // DELETE
