@@ -12,3 +12,8 @@ node app.js # or use nodemon app.js
 ```
 
 The app should now be running on [localhost:3000](http://localhost:3000/). Make sure MongoDB is installed and MongoDB Daemon is running.
+
+## ToDo:
++ Add Tests Section
++ Ajax Reviews
++ Login System
