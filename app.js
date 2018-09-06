@@ -51,9 +51,11 @@ app.use(methodOverride('_method'));
 var reviews = require('./controllers/reviews');
 var comments = require('./controllers/comments');
 var movies = require('./controllers/movies');
+var admin = require('./controllers/admin');
 reviews(app, Review, Comment);
 comments(app, Comment);
 movies(app, Review);
+admin(app, Review);
 
 // CONSOLE
 app.listen(process.env.PORT || 3000, () => {
