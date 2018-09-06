@@ -25,6 +25,7 @@ app.set('view engine', hbs.extname);
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // MONGOOSE CONNECTION

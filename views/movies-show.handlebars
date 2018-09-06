@@ -16,7 +16,7 @@
         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{movie.trailer_youtube_id}}?rel=0"></iframe>
     </div>
 
-    <h3>Reviews</h3>
+    {{#if reviews}}<h3>Reviews</h3>{{/if}}
     {{#each reviews}}
         <div>
             <h1><a href="/movies/{{this.movieId}}/reviews/{{this._id}}">{{this.title}} - {{this.rating}} stars</a></h1>

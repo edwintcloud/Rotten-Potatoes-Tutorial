@@ -21,7 +21,6 @@ module.exports = function(app, Review, Comment) {
     // CREATE
     app.post('/movies/:movieId/reviews', (req, res) => {
         Review.create(req.body).then((review) => {
-            console.log(review)
             res.redirect(`/movies/${req.params.movieId}`) // Redirect to reviews/:id
         }).catch((err) => {
             console.log(err.message)
@@ -69,8 +68,7 @@ module.exports = function(app, Review, Comment) {
     });
 
     // DELETE
-    app.delete('/reviews/:id', function(req, res) {
-        console.log("DELETE review")
+    app.delete('/movies/:movieId/reviews/:id', function(req, res) {
         Review.findByIdAndRemove(req.params.id).then((review) => {
             res.redirect(`/movies/${req.params.movieId}`);
         }).catch((err) => {
