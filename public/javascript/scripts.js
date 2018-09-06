@@ -28,10 +28,11 @@ function commentDelete() {
             $("#" + commentId).remove();
         });
 }
-function deleteReview() {
-    let reviewId = $("#deleteReview").attr('review-id');
+function deleteReview(index) {
+    let reviewId = $("#deleteReview" + index).attr('review-id');
     axios.delete('/admin/reviews/' + reviewId)
         .then(function(response) {
+            console.log(response);
             $("#admin-" + reviewId).remove();
         });
 }

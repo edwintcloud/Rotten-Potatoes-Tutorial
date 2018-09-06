@@ -20,6 +20,10 @@ module.exports = function(app, Review, Comment) {
 
     // CREATE
     app.post('/movies/:movieId/reviews', (req, res) => {
+        if(req.body['title'] == "" || req.body['description'] == "") {
+            res.redirect(`/movies/${req.params.movieId}`);
+            return;
+        }
         Review.create(req.body).then((review) => {
             res.redirect(`/movies/${req.params.movieId}`) // Redirect to reviews/:id
         }).catch((err) => {
@@ -58,6 +62,10 @@ module.exports = function(app, Review, Comment) {
 
     // UPDATE
     app.put('/movies/:movieId/reviews/:id', (req, res) => {
+        if(req.body['title'] == "" || req.body['description'] == "") {
+            res.redirect(`/movies/${req.params.movieId}/reviews/${req.params.id}`);
+            return;
+        }
         Review.findByIdAndUpdate(req.params.id, req.body)
             .then(review => {
                 res.redirect(`/movies/${req.params.movieId}/reviews/${req.params.id}`);

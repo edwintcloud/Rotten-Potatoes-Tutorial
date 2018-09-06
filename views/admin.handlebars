@@ -18,7 +18,7 @@
                 <td>{{this.title}}</td>
                 <td>{{this.description}}</td>
                 <td>{{this.rating}}</td>
-                <td><button class="btn btn-link" type="button" id="deleteReview" onclick="deleteReview();" review-id={{this._id}}>Delete</button><td>
+                <td><button class="btn-link" type="button" id="deleteReview{{@index}}" onclick="deleteReview({{@index}});" review-id={{this._id}}>Delete</button><td>
             </tr>
         {{/each}}
     </tbody>
