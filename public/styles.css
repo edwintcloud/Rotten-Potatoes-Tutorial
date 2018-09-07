@@ -20,3 +20,22 @@ div.movie span.genre {
 div.movie a {
     margin-bottom: .2em;
 }
+
+.customLoginBox {
+    text-align: center;
+    margin: auto;
+    width: 35%;
+    padding: 1em 0 0 0;
+}
+
+.customLoginBox .alert {
+    margin-top: 1em;
+}
+
+.form-signin .form-control {
+    margin: .4em 0 .4em 0;
+}
+
+.form-signin .btn {
+    margin-top: .8em;
+}

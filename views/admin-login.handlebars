@@ -1,0 +1,12 @@
+<div class="customLoginBox">
+    <form class="form-signin" method="POST" action="/admin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+    {{#if attempt}}<div class="alert alert-danger" role="alert">Username or password incorrect, please try again!</div>
+    {{else}}<div class="alert alert-info" role="alert">The username is certainly not admin and the password is most definitely not password.</div>{{/if}}
+</div>

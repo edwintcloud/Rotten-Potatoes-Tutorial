@@ -1,16 +1,28 @@
+const adminUsername = "admin";
+const adminPassword = "password";
+
 module.exports = function(app, Review) {
 
-    // ADMIN
+    // ADMIN LANDING
     app.get('/admin', (req, res) => {
-        Review.find()
-            .then(reviews => {
-                res.render('admin', {
-                    reviews: reviews
+        res.render('admin-login', { attempt: false });
+    });
+
+    // ADMIN LOGIN
+    app.post('/admin', (req, res) => {
+        if (req.body['username'] == adminUsername && req.body['password'] == adminPassword) {
+            Review.find()
+                .then(reviews => {
+                    res.render('admin', {
+                        reviews: reviews
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
                 });
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        } else {
+            res.render('admin-login', { attempt: true });
+        }
     });
 
     // ADMIN DELETE REVIEW

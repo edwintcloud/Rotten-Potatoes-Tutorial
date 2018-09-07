@@ -18,5 +18,4 @@ The app should now be running on [localhost:3000](http://localhost:3000/). Make 
 
 ## ToDo:
 + ~~Add Tests Section~~
-+ Ajax Reviews
 + Login System

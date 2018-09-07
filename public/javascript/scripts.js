@@ -1,3 +1,6 @@
+const adminUsername = "admin";
+const adminPassword = "password";
+
 function commentAdd() {
     var comment = $("#newComment").serializeHash();
     if(comment['title'] == "" || comment['content'] == "") return;
