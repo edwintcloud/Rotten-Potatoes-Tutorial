@@ -3,15 +3,12 @@
 <a href="/movies/{{review.movieId}}">Back to Movie</a>
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-        <h1>{{review.title}} - {{review.rating}} stars</h1>
+        <form method="POST" action="/movies/{{review.movieId}}/reviews/{{review._id}}?_method=DELETE">
+            <h1>{{review.title}}<button class="btn-link fa fa-trash-o" type="submit"></button></h1>
+        </form>
+        {{stars review.rating}}
         <p>{{review.description}}</p>
         <p><a href="/movies/{{review.movieId}}/reviews/{{review._id}}/edit">Edit</a></p>
-        <p>
-            <form method="POST" action="/movies/{{review.movieId}}/reviews/{{review._id}}?_method=DELETE">
-                <button class="btn btn-primary" type="submit">Delete</button>
-            </form>
-        </p>
-
         <hr>
 
         <!-- Comment form -->

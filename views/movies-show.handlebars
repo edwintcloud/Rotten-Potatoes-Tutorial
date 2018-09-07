@@ -16,15 +16,15 @@
         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{movie.trailer_youtube_id}}?rel=0"></iframe>
     </div>
 
-    {{#if reviews}}<h3>Reviews</h3>{{/if}}
+    {{#if reviews}}<h3>Reviews</h3><hr>{{/if}}
     {{#each reviews}}
         <div>
-            <h1><a href="/movies/{{this.movieId}}/reviews/{{this._id}}">{{this.title}} - {{this.rating}} stars</a></h1>
+            <h1><a href="/movies/{{this.movieId}}/reviews/{{this._id}}">{{this.title}}</a></h1>
+            {{stars this.rating}}
             <p>{{this.description}}</p>
-            <p><a href="/movies/{{this.movieId}}/reviews/{{this._id}}/edit">Edit</a></p>
             <p>
                 <form method="POST" action="/movies/{{this.movieId}}/reviews/{{this._id}}?_method=DELETE">
-                    <button class="btn btn-primary" type="submit">Delete</button>
+                    <button class="btn-link" type="submit">Delete</button>
                 </form>
             </p>
         </div>

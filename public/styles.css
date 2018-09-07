@@ -39,3 +39,15 @@ div.movie a {
 .form-signin .btn {
     margin-top: .8em;
 }
+
+.checked {
+    color: orange;
+}
+
+.fa-trash-o {
+    color: black;
+    margin-left: .3em;
+}
+.fa-trash-o:hover {
+    color: red;
+}

@@ -44,6 +44,18 @@ Handlebars.registerHelper("select", function(value, options) {
         .join('\n')
 });
 
+Handlebars.registerHelper("stars", function(items) {
+    var html = "";
+    for (i = 0; i < 5; i++) {
+        if (i < Number(items)) {
+            html += "<span class='fa fa-star checked'></span>";
+        } else {
+            html += "<span class='fa fa-star'></span>";
+        }
+    }
+    return new Handlebars.SafeString(html);
+});
+
 // override with POST having ?_method=DELETE or ?_method=PUT
 app.use(methodOverride('_method'));
 
