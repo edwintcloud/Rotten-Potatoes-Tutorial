@@ -1,6 +1,9 @@
 # Rotten Potatoes - Part Deux Tutorial
 A Node.js and MongoDB Rotten Tomatoes clone.
 
+## Heroku
+This project is also hosted on Heroku [here](https://rotten-potatoes-ec.herokuapp.com/).
+
 ## Running Locally
 Make sure you have [Node.js](http://nodejs.org/) and [MongoDB](https://www.mongodb.com/) installed.
 
