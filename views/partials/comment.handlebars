@@ -4,9 +4,7 @@
         <p class="card-text">{{this.content}}</p>
         <!-- Delete link -->
         <p>
-            <form method="POST" action="#">
-                <button class="btn btn-link" type="button" id="deleteComment" onclick="commentDelete();" comment-id={{this._id}} movie-id={{this.movieId}}>Delete</button>
-            </form>
+                <input class="btn btn-link" type="button" id="deleteComment-{{slice8 this._id}}" onclick="commentDelete('{{slice8 this._id}}');" comment-id={{this._id}} movie-id={{this.movieId}}>Delete</button>
         </p>
     </div>
 </div>

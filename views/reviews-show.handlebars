@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
         <form method="POST" action="/movies/{{review.movieId}}/reviews/{{review._id}}?_method=DELETE">
-            <h1>{{review.title}}<button class="btn-link fa fa-trash-o" type="submit"></button></h1>
+            <h1>{{review.title}}<button class="fa fa-trash-o" type="submit"></button></h1>
         </form>
         {{stars review.rating}}
         <p>{{review.description}}</p>
@@ -12,7 +12,7 @@
         <hr>
 
         <!-- Comment form -->
-        {{> comment-form}}
+        {{> comment-form value='hello'}}
 
         <hr>
 

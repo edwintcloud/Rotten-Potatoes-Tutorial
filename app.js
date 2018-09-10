@@ -56,6 +56,11 @@ Handlebars.registerHelper("stars", function(items) {
     return new Handlebars.SafeString(html);
 });
 
+Handlebars.registerHelper("slice8", function (context) {
+    var result = '' + context;
+    return result.slice(-8);
+});
+
 // override with POST having ?_method=DELETE or ?_method=PUT
 app.use(methodOverride('_method'));
 

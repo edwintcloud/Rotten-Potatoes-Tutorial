@@ -46,7 +46,14 @@ div.movie a {
 
 .fa-trash-o {
     color: black;
-    margin-left: .3em;
+    margin-left: .4em;
+    background:none!important;
+    color:inherit;
+    border:none; 
+    padding:0!important;
+    font: inherit;
+    cursor: pointer;
+    font-size: .8em!important;
 }
 .fa-trash-o:hover {
     color: red;
