@@ -58,3 +58,16 @@ div.movie a {
 .fa-trash-o:hover {
     color: red;
 }
+.timestamp {
+    margin-left: 1.5em!important;
+    color: grey!important;
+}
+.panel-title {
+    font-size: 1.4em!important;
+
+}
+.trashit {
+    position: relative!important;
+    top: -.2em!important;
+    font-size: 2.8em!important;
+}

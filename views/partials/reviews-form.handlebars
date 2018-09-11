@@ -27,4 +27,15 @@
             <label for="review-description">Description</label><br>
             <textarea class="form-control" id="review-description" name="description" rows="10" />{{review.description}}</textarea>
         </div>
+        
+        <!-- DATE -->
+        <input type="hidden" name="date" id="todayDate"/>
+        <script type="text/javascript">
+        function getDate()
+        {
+            var today = new Date();
+            document.getElementById("todayDate").value = today;
+        }
+        getDate();
+        </script>
 </fieldset>

@@ -18,14 +18,18 @@
 
     {{#if reviews}}<h3>Reviews</h3><hr>{{/if}}
     {{#each reviews}}
-        <div>
-            <h1><a href="/movies/{{this.movieId}}/reviews/{{this._id}}">{{this.title}}</a></h1>
-            {{stars this.rating}}
-            <p>{{this.description}}</p>
-            <p>
-                <form method="POST" action="/movies/{{this.movieId}}/reviews/{{this._id}}?_method=DELETE">
-                    <button class="btn-link" type="submit">Delete</button>
-                </form>
-            </p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="pull-right trashit">                        
+                    <form method="POST" action="/movies/{{review.movieId}}/reviews/{{review._id}}?_method=DELETE">
+                        <button class="fa fa-trash-o" type="submit"></button>
+                    </form>   
+                </div>  
+                <h3 class="panel-title"><a href="/movies/{{this.movieId}}/reviews/{{this._id}}">{{this.title}}</a>&emsp;&emsp;{{stars this.rating}}</h1>
+                    <span class="timestamp">Last Modified: {{prettyDate this.date}}</span>         
+            </div>
+            <div class="panel-body">                
+                <p>{{this.description}}</p>
+            </div>
         </div>
     {{/each}}

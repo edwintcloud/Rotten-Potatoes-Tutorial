@@ -61,6 +61,20 @@ Handlebars.registerHelper("slice8", function (context) {
     return result.slice(-8);
 });
 
+Handlebars.registerHelper("prettyDate", function (c) {
+    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    var dd = (c.getDate()<10 ? "0" + c.getDate() : c.getDate());
+    var month = months[c.getMonth()];
+    var yyyy = c.getFullYear();
+    var hh = c.getHours();
+    var mm = (c.getMinutes()<10 ? "0" + c.getMinutes() : c.getMinutes());
+    var ss = (c.getSeconds()<10 ? "0" + c.getSeconds() : c.getSeconds());
+    var mod = (hh>12 ? "PM" : "AM");
+    hh = (hh>12 ? hh-12 : hh)
+
+    return (month + ' ' + dd + ', ' + yyyy + ' ' + hh + ':' + mm + ':' + ss + ' ' + mod);
+});
+
 // override with POST having ?_method=DELETE or ?_method=PUT
 app.use(methodOverride('_method'));
 

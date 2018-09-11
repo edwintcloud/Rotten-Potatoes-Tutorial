@@ -11,6 +11,10 @@ const Comment = mongoose.model('Comment', {
     reviewId: {
         type: Schema.Types.ObjectId,
         ref: 'Review'
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 });
 

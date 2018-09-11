@@ -8,5 +8,9 @@ const Review = mongoose.model('Review', {
     title: String,
     rating: Number,
     description: String,
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });
 module.exports = Review;
