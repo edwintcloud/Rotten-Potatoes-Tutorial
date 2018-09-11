@@ -16,15 +16,16 @@
         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{movie.trailer_youtube_id}}?rel=0"></iframe>
     </div>
 
-    {{#if reviews}}<h3>Reviews</h3><hr>{{/if}}
+    {{#if reviews}}<h3>Reviews</h3>
+        <hr>{{/if}}
     {{#each reviews}}
         <div class="panel panel-default">
             <div class="panel-heading">
-                <div class="pull-right trashit">                        
-                    <form method="POST" action="/movies/{{review.movieId}}/reviews/{{review._id}}?_method=DELETE">
+                <div class="pull-right trashit">
+                    <form method="POST" action="/movies/{{review.movieId}}/reviews/{{this._id}}?_method=DELETE">
                         <button class="fa fa-trash-o" type="submit"></button>
-                    </form>   
-                </div>  
+                    </form>
+                </div>
                 <h3 class="panel-title"><a href="/movies/{{this.movieId}}/reviews/{{this._id}}">{{this.title}}</a>&emsp;&emsp;{{stars this.rating}}</h1>
                     <span class="timestamp">Last Modified: {{prettyDate this.date}}</span>         
             </div>
