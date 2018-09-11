@@ -75,6 +75,10 @@ Handlebars.registerHelper("prettyDate", function (c) {
     return (month + ' ' + dd + ', ' + yyyy + ' ' + hh + ':' + mm + ':' + ss + ' ' + mod);
 });
 
+Handlebars.registerHelper("reverse", function(a) {
+    a.reverse();
+});
+
 // override with POST having ?_method=DELETE or ?_method=PUT
 app.use(methodOverride('_method'));
 

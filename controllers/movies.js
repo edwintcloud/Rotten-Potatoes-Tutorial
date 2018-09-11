@@ -49,7 +49,7 @@ module.exports = function(app, Review) {
                 function renderTemplate(movie) {
                     res.render('movies-show', {
                         movie: movie,
-                        reviews: reviews
+                        reviews: reviews.reverse()
                     });
                 }
             });
