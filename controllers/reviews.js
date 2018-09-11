@@ -42,7 +42,7 @@ module.exports = function(app, Review, Comment) {
                 // respond with the template with both values
                 res.render('reviews-show', {
                     review: review,
-                    comments: comments
+                    comments: comments.reverse()
                 })
             })
         }).catch((err) => {

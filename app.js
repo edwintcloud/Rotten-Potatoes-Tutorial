@@ -70,13 +70,13 @@ Handlebars.registerHelper("prettyDate", function (c) {
     var mm = (c.getMinutes()<10 ? "0" + c.getMinutes() : c.getMinutes());
     var ss = (c.getSeconds()<10 ? "0" + c.getSeconds() : c.getSeconds());
     var mod = (hh>12 ? "PM" : "AM");
-    hh = (hh>12 ? hh-12 : hh)
+    if(hh>12) {
+        hh -= 12;
+    }else {
+        hh = (hh == 0 ? 12 : hh);
+    }
 
     return (month + ' ' + dd + ', ' + yyyy + ' ' + hh + ':' + mm + ':' + ss + ' ' + mod);
-});
-
-Handlebars.registerHelper("reverse", function(a) {
-    a.reverse();
 });
 
 // override with POST having ?_method=DELETE or ?_method=PUT

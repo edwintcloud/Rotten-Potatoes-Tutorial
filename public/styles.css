@@ -71,3 +71,8 @@ div.movie a {
     top: -.2em!important;
     font-size: 2.8em!important;
 }
+.trashit-comment {
+    position: relative!important;
+    top: -.4em!important;
+    font-size: 2em!important;
+}
