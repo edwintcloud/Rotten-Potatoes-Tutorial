@@ -35,16 +35,12 @@ module.exports = function(app, Review) {
             Review.find({
                 movieId: movie.id
             }).then(reviews => {
-                if (movie.video) {
-                    moviedb.movieVideos({
+                    moviedb.movieTrailers({
                         id: req.params.id
                     }).then(videos => {
-                        movie.trailer_youtube_id = videos.results[0].key
+                        movie.trailer_youtube_id = videos.youtube[0].source
                         renderTemplate(movie)
                     });
-                } else {
-                    renderTemplate(movie);
-                }
 
                 function renderTemplate(movie) {
                     res.render('movies-show', {

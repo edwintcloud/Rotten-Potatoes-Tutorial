@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,5 +19,8 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.2.10",
     "moviedb-promise": "^1.2.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
   }
 }
